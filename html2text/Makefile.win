@@ -1,0 +1,46 @@
+# Project: HTM2TXT
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Extensions.o Node.o ParserDom.o ParserSax.o Uri.o utils.o
+LINKOBJ  = main.o Extensions.o Node.o ParserDom.o ParserSax.o Uri.o utils.o
+LIBS     = -L"D:/양현서/CODE/Dev-Cpp/MinGW64/lib32" -L"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"D:/양현서/CODE/Dev-Cpp/MinGW64/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/양현서/CODE/Dev-Cpp/MinGW64/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/양현서/CODE/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = HTM2TXT.exe
+CXXFLAGS = $(CXXINCS) -m32 -std=c++11 -w
+CFLAGS   = $(INCS) -m32 -std=c++11 -w
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Extensions.o: Extensions.cc
+	$(CPP) -c Extensions.cc -o Extensions.o $(CXXFLAGS)
+
+Node.o: Node.cc
+	$(CPP) -c Node.cc -o Node.o $(CXXFLAGS)
+
+ParserDom.o: ParserDom.cc
+	$(CPP) -c ParserDom.cc -o ParserDom.o $(CXXFLAGS)
+
+ParserSax.o: ParserSax.cc
+	$(CPP) -c ParserSax.cc -o ParserSax.o $(CXXFLAGS)
+
+Uri.o: Uri.cc
+	$(CPP) -c Uri.cc -o Uri.o $(CXXFLAGS)
+
+utils.o: utils.cc
+	$(CPP) -c utils.cc -o utils.o $(CXXFLAGS)
